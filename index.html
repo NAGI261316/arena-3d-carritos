@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Arena 3D de Carritos Chocones | Computación Gráfica</title>
+    <!-- Estilos CSS del visor y la interfaz HUD -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="encabezado">
+        <div class="logo-area">
+            <h1>Arena 3D de Carritos Chocones</h1>
+            <span class="subtitulo">Computación Gráfica 2026-II · Unidad 01 · Jefferson Quispe (236722)</span>
+        </div>
+        <div class="hud-badges">
+            <span id="hudRoofIndicator" class="badge-luz activa">Luz Techo: ENCENDIDA</span>
+            <span id="hudMiniRoofIndicator" class="badge-luz activa-verde">Luz Minitecho: ENCENDIDA</span>
+            <span id="hudCameraIndicator" class="badge-camara">Cámara: 1ª Persona (Conductor)</span>
+        </div>
+    </header>
+
+    <!-- Texto simple de control de iluminación en la interfaz de usuario -->
+    <div class="aviso-luces">
+        Presiona T para luz techo y Presiona Y para luz minitecho.
+    </div>
+
+    <main id="caja">
+        <canvas id="glCanvas" width="960" height="600"></canvas>
+        <!-- Mira o punto de mira central (Crosshair estilo FPS de las capturas) -->
+        <div id="mira"></div>
+    </main>
+
+    <footer id="panel-controles">
+        <div class="control-item"><kbd>W</kbd><kbd>S</kbd> o <kbd>↑</kbd><kbd>↓</kbd> <span>Acelerar / Reversa</span></div>
+        <div class="control-item"><kbd>A</kbd><kbd>D</kbd> o <kbd>←</kbd><kbd>→</kbd> <span>Girar Dirección</span></div>
+        <div class="control-item"><kbd>Mouse</kbd> <span>Mirar (Arrastrar o Clic)</span></div>
+        <div class="control-item"><kbd>Rueda</kbd> <span>Zoom FOV</span></div>
+        <div class="control-item"><kbd>C</kbd> <span>1ª / 3ª Persona</span></div>
+        <div class="control-item"><kbd>R</kbd> <span>Reiniciar</span></div>
+        <div class="control-item"><kbd>T</kbd> <span>Luz Techo</span></div>
+        <div class="control-item"><kbd>Y</kbd> <span>Luz Minitecho</span></div>
+    </footer>
+
+    <!-- ============================================================== -->
+    <!-- ARQUITECTURA MODULAR DESGLOZADA POR CLASES Y FUNCIONES         -->
+    <!-- ============================================================== -->
+
+    <!-- 1. Álgebra Lineal y Matemáticas 3D -->
+    <script src="js/math/Vector3.js"></script>
+    <script src="js/math/Matrix4.js"></script>
+
+    <!-- 2. Motor Gráfico Base WebGL2 -->
+    <script src="js/core/WebGLContext.js"></script>
+    <script src="js/materials/Shaders.js"></script>
+    <script src="js/core/ShaderProgram.js"></script>
+    <script src="js/core/InputManager.js"></script>
+
+    <!-- 3. Geometrías Paramétricas 3D -->
+    <script src="js/geometry/Geometry.js"></script>
+    <script src="js/geometry/CubeGeometry.js"></script>
+    <script src="js/geometry/SphereGeometry.js"></script>
+    <script src="js/geometry/CylinderGeometry.js"></script>
+    <script src="js/geometry/TorusGeometry.js"></script>
+
+    <!-- 4. Texturas Procedurales y Materiales con Iluminación Blinn-Phong -->
+    <script src="js/materials/TextureGenerator.js"></script>
+    <script src="js/materials/Material.js"></script>
+
+    <!-- 5. Sistema de Cámara y Física Vehicular -->
+    <script src="js/camera/Camera.js"></script>
+    <script src="js/physics/PhysicsEngine.js"></script>
+
+    <!-- 6. Entidades Jerárquicas 3D del Mundo -->
+    <script src="js/entities/BumperCar.js"></script>
+    <script src="js/entities/ArenaEnvironment.js"></script>
+
+    <!-- 7. Ciclo de Animación y Entrada Principal -->
+    <script src="js/core/RenderLoop.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
